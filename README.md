@@ -31,7 +31,7 @@ ___
 ## 2. Install
 
   ```bash
-  git clone https://github.com/inzar98/optimus-manager-argos.git
+  git clone https://github.com/LGiki/optimus-manager-argos.git
   cd optimus-manager-argos
 
   # Install the files
