@@ -4,13 +4,15 @@ Gnome Shell Indicator for Optimus-Manager, using Argos API.
 
 Special Thanks to Cyberalex4 and Askannz <3!
 
+Support AMD GPU.
+
 Screenshot was first release. Added icon switch for after GPU Switching.
 
-![NVidia Prime Argos Indicator](https://github.com/inzar98/optimus-manager-argos/blob/master/screenshots/optimus-manager-1.png)                                       
+![NVidia Prime Argos Indicator](./screenshots/optimus-manager-1.png)
 
 ___
 
-### Requirements
+# Requirements
 
 - [Argos](https://extensions.gnome.org/extension/1176/argos/) Gnome Shell extension.
 - [Optimus-Manager](https://github.com/Askannz/optimus-manager) Awesome Optimus Switch script!
@@ -18,15 +20,15 @@ ___
 - Any Arch based distro.
 
 
-### Installation
+# Installation
 
-#### 1. Create directory `~/.local/share/icons` if it does not exist:
+## 1. Create directory `~/.local/share/icons` if it does not exist:
 
   ```bash
   ! [ -d "~/.local/share/icons" ] && mkdir --parents ~/.local/share/icons
   ```
 
-#### 2. Install
+## 2. Install
 
   ```bash
   git clone https://github.com/inzar98/optimus-manager-argos.git
@@ -36,11 +38,11 @@ ___
   make install
   ```
 
-#### 3. Enjoy!
+## 3. Enjoy!
 
 ___
 
-### Uninstall
+# Uninstall
 
 ```bash
 # Remove the files
