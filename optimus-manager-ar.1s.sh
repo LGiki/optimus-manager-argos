@@ -6,6 +6,7 @@ source ~/.config/optimus-manager-argos/omarc 2> /dev/null
 
 nvidia_switch="optimus-manager --no-confirm --switch nvidia"
 hybrid_switch="optimus-manager --no-confirm --switch hybrid"
+amd_switch="optimus-manager --no-confirm --switch amd"
 intel_switch="optimus-manager --no-confirm --switch intel"
 notify_switch="notify-send -h int:transient:2 -i \\\"dialog-information-symbolic\\\" \\\"Optimus Manager Indicator\\\" \\\"Switching graphics and restaring X server to finalize process! \\\" ; "
 activate_intel="\"\
@@ -25,6 +26,17 @@ activate_hybrid="\"\
 	$notify_switch \
 	sleep 2; \
 	$hybrid_switch; \
+	else \
+	exit 1; \
+	fi \
+	\""
+
+activate_amd="\"\
+	if zenity --question --title \\\"Optimus Manager Indicator\\\" --text \\\"Restart X server to switch on AMD?\\\" --width=256; \
+	then \
+	$notify_switch \
+	sleep 2; \
+	$amd_switch; \
 	else \
 	exit 1; \
 	fi \
@@ -77,7 +89,11 @@ if [ "$QUERY" == 'nvidia' ] || [ "$QUERY" == 'hybrid' ]; then
 
 	panel_string="$panel_string | "
 else
-    nvidia_state_icon=primeindicatorintelsymbolic
+	if [ "$QUERY" == 'intel' ]; then
+		nvidia_state_icon=primeindicatorintelsymbolic
+	else
+		nvidia_state_icon=primeindicatoramdsymbolic
+	fi
     panel_string=""
 fi
 
@@ -85,6 +101,7 @@ echo -e "$panel_string | iconName=$nvidia_state_icon"
 echo "---"
 echo "NVIDIA PRIME Profiles | iconName=$nvidia_state_icon bash=$nvidia_settings terminal=false"
 echo "---"
+echo "Switch to AMD | iconName='primeindicatoramdsymbolic' bash=$activate_amd terminal=false"
 echo "Switch to INTEL | iconName='primeindicatorintelsymbolic' bash=$activate_intel terminal=false"
 echo "Switch to HYBRID  | iconName='primeindicatorhybridsymbolic' bash=$activate_hybrid  terminal=false"
 echo "Switch to NVIDIA  | iconName='primeindicatornvidiasymbolic' bash=$activate_nvidia  terminal=false"
